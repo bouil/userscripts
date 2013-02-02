@@ -1,0 +1,124 @@
+.button {
+    /* Legacy browsers */
+	background: #DDDDDD url("/SCUW/images/fondBouton.png") repeat-x top;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Recent browsers */
+	background: -moz-linear-gradient(
+		top,
+		#FFFFFF,
+		#FFFFFF 30%,
+		#DDDDDD 65%,
+		#DDDDDD
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#FFFFFF),
+		to(#DDDDDD),
+		color-stop(0.3, #FFFFFF),
+		color-stop(0.65, #DDDDDD)
+	);
+
+
+    color: #444;
+    font: bold 11px arial, sans-serif;
+    height: 24px;
+    border : solid 1px #AAAAAA;
+    -webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	-o-border-radius: 12px;
+	border-radius: 12px;
+	overflow: visible;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.button:active {
+    /* Legacy browsers */
+	background: #FFFFFF url("/SCUW/images/fondBoutonClicked.png") repeat-x top;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Recent browsers */
+	background: -moz-linear-gradient(
+		top,
+		#DDDDDD,
+		#DDDDDD 35%,
+		#FFFFFF 70%,
+		#FFFFFF
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#DDDDDD),
+		to(#FFFFFF),
+		color-stop(0.35, #DDDDDD),
+		color-stop(0.7, #FFFFFF)
+	);
+    
+    
+    background-position: bottom right;
+    color: #000;
+    
+}
+
+.button:hover {
+	color : black;
+}
+
+.button[disabled] {
+    /* Legacy browsers */
+	background: #DDDDDD url("/SCUW/images/fondBouton.png") repeat-x top;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Recent browsers */
+	background: -moz-linear-gradient(
+		top,
+		#FFFFFF,
+		#FFFFFF 30%,
+		#DDDDDD 65%,
+		#DDDDDD
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#FFFFFF),
+		to(#DDDDDD),
+		color-stop(0.3, #FFFFFF),
+		color-stop(0.65, #DDDDDD)
+	);
+
+
+    color: #888;
+    font: bold 11px arial, sans-serif;
+    height: 24px;
+    border : solid 1px #AAAAAA;
+    -webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	-o-border-radius: 12px;
+	border-radius: 12px;
+	
+}
+
+textarea{
+	height: auto;
+	width: auto;
+}
+
+/**************************style pour info code******************/
+#divErreurSaisie .erreurSaisie {
+    background: none repeat scroll 0 0 #FFE0F7;
+    border-bottom: 1px solid #FFFFFF;
+    padding: 8px;
+}
+#infoCode{
+	color: rgb(69, 157, 69);
+	font-weight: bold;
+}
+/****************************************************************/

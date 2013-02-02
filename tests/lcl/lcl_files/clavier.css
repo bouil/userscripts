@@ -1,0 +1,439 @@
+.posBlocPopUp{
+	position : relative;
+	margin-top: 8em;	
+}
+.identClavier .posTitrePopUp{
+	margin: 0;
+	padding: 0;
+	background-color: #54D1F3;
+	vertical-align: middle;
+	height: 3.6em;
+}
+.identClavier .TitrePopUp{
+	color: #FFFFFF;
+	font-size: 2.4em;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, Geneva, Swiss, SunSans-Regular;
+	margin: 0.8em 0;
+	padding: 0 0 0 0.8em;
+}
+.blocGauche {
+    float : left;
+    position : relative;
+    width : 147px;
+    padding : 5px;
+}
+
+.identClavier a {
+	font-size: 0.5em;
+}
+
+.blocDroite {
+	font-size: 17px;
+    float : left;
+    position : relative;
+    width : 370px;
+    padding : 5px 10px;
+    border-left: 1px solid #54D1F3;
+    font-family: Arial, Verdana, Helvetica, Geneva, Swiss, SunSans-Regular;
+}
+
+.blocDroite .erreur {
+	font-size: 12px;
+	margin-bottom:10px;
+}
+
+.blocDroite fieldset {
+	float : left;
+    position : relative;
+    width : 350px;
+    background-color: #EFEFEF;
+    border : none;
+    color: #494949;
+    font-size: 1.0em;
+   	font-weight: bold;
+   	padding: 7px 5px;
+   	margin-bottom : 15px;
+}
+
+.blocDroite fieldset label {
+	color: #494949;
+    font-size: 0.7em;
+   	font-weight: bold;
+   	padding-left: 0.6em;
+}
+
+.blocDroite fieldset input{
+	margin : 0;
+}
+
+.fieldLabel {
+	margin-bottom : 0.1em;
+	margin-top: 0.2em;
+}
+.inputAgenceId{
+	padding-left: 2.7em;
+	font-family: Arial, Verdana, Helvetica, Geneva, Swiss, SunSans-Regular;
+	font-size: 0.8em;
+}
+.inputNumCompte{
+	padding-left: 0.4em;
+	font-family: Arial, Verdana, Helvetica, Geneva, Swiss, SunSans-Regular;
+	font-size: 0.8em;
+}
+input[type="password"] {
+    background-color: #F8F8F8;
+    border: 1px solid #BBBBBB;
+}
+
+input[type="text"], input.text, input.title, textarea, select {
+    background-color: #F8F8F8;
+    border: 1px solid #BBBBBB;
+}
+
+.blocDroite h2 {
+    color: #1F368B;
+	font-size: 1.06em;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, Geneva, Swiss, SunSans-Regular;
+	margin-bottom: 0em;
+	margin-top: -0.3em;
+}
+
+.titreId {
+	float : left;
+	position : relative;
+}
+
+.liensNewCode {
+	float: left;
+	position : relative;
+	font-weight: bold;
+	color : #494949;
+	margin-top: -0.3em;
+	padding-left: 0.5em;
+}
+
+.liensNewCode a, .liensNewCode span {
+	float:left;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 0.72em;
+	color : #494949;
+}
+
+
+.clavierChevron {
+	color : #494949;
+	float : left;
+	border-top : 4px solid transparent;
+	border-right : none;
+	border-left : 4px solid;
+	border-bottom : 4px solid transparent;
+	width : 0;
+	height : 0;
+	margin : 5px -4px 0px 10px;
+}
+
+.head1 {
+	float : left;
+	position : relative;
+	width : 100%;
+	height: 1.6em;
+   	line-height: 1.6em;
+}
+
+.zonePsp2 {
+	margin-bottom : 5px;
+}
+
+.fieldRight {
+	float:right;
+}
+
+.infoClavier{
+	font: Arial, Verdana, Helvetica, Geneva, Swiss, SunSans-Regular;
+	font-size: 0.72em;
+	color : #494949;
+	font-weight: bold;
+	margin: 0;
+	padding: 0 0 0.8em 0.6em;
+}
+
+.clavisButtons {
+	text-align: center;
+	position : relative;
+	float: left;
+	padding-left: 6.6em;
+	padding-bottom: 1em;
+}
+
+.clavisButtons .buttonClavier {
+   /* Legacy browsers */
+	background: #DDDDDD url("/SCUW/images/fondBouton.png") repeat-x top;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Recent browsers */
+	background: -moz-linear-gradient(
+		top,
+		#FFFFFF,
+		#FFFFFF 30%,
+		#DDDDDD 65%,
+		#DDDDDD
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#FFFFFF),
+		to(#DDDDDD),
+		color-stop(0.3, #FFFFFF),
+		color-stop(0.65, #DDDDDD)
+	);
+
+
+    color: #444;
+    font: bold 11px arial, sans-serif;
+    height: 24px;
+    border : solid 1px #AAAAAA;
+    -webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+}
+
+.buttonClavier:hover{
+	color : black;
+}
+	
+.validClavis {
+    /* Legacy browsers */
+	background: #3399cc url("/SCUW/images/boutonValiderClavier.png") repeat-x top;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Recent browsers */
+	background: -moz-linear-gradient(
+		top,
+		#ffeeff,
+		#ddeeff 4%,
+		#84DEF4 60%,
+		#54D1F3 75%,
+		#54D1F3
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#ffeeff),
+		to(#54D1F3),
+		color-stop(0.04, #ddeeff),
+		color-stop(0.6, #84DEF4),
+		color-stop(0.75, #54D1F3)
+	);
+
+
+    font: bold 11px arial, sans-serif;
+    height: 24px;
+    border : solid 1px #54D1F3;
+    -webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	
+}
+
+.validClavis:active {
+    /* Legacy browsers */
+	background: #3399cc url("/SCUW/images/boutonValiderClavierClicked.png") repeat-x top;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Recent browsers */
+	background: -moz-linear-gradient(
+		top,
+		#54D1F3,
+		#54D1F3 25%,
+		#84DEF4 40%,
+		#ddeeff 96%,
+		#ffeeff
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#54D1F3),
+		to(#ffeeff),
+		color-stop(0.25, #54D1F3),
+		color-stop(0.40, #84DEF4),
+		color-stop(0.96, #ddeeff)
+	);
+    
+    
+    background-position: bottom right;
+    color: #000;
+    
+}
+
+.corrigerClavis {
+    /* Legacy browsers */
+	background: #848383 url("/SCUW/images/boutonCorrigerClavier.png") repeat-x top;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Recent browsers */
+	background: -moz-linear-gradient(
+		top,
+		#fff,
+		#D8D8D8 4%,
+		#B7B5B5 60%,
+		#848383 75%,
+		#848383
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#fff),
+		to(#848383),
+		color-stop(0.04, #D8D8D8),
+		color-stop(0.6, #B7B5B5),
+		color-stop(0.75, #848383)
+	);
+
+
+    color: #444;
+    font: bold 11px arial, sans-serif;
+    height: 24px;
+    border : solid 1px #AAAAAA;
+    -webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	
+}
+
+.corrigerClavis:active {
+	/* Legacy browsers */
+	background: #3399cc url("/SCUW/images/boutonCorrigerClavierClicked.png") repeat-x top;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Recent browsers */
+	background: -moz-linear-gradient(
+		top,
+		#848383,
+		#848383 25%,
+		#B7B5B5 40%,
+		#D8D8D8 96%,
+		#fff
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#848383),
+		to(#fff),
+		color-stop(0.25, #848383),
+		color-stop(0.40, #B7B5B5),
+		color-stop(0.96, #D8D8D8)
+	);
+	
+	background-position: bottom right;
+    color: #000;
+}
+
+
+/********************/
+
+.identClavier {
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 10px 10px 10px 10px;
+	border-color: #54D1F3;
+	float : left;
+	position : relative;
+	width:100%;
+}
+
+/********************/
+
+.clavis {
+	float: left;
+    position: relative;
+    text-align: left;
+    width: 200px;
+    padding: 0 0 0.8em 0.6em;
+}
+
+.containerClavier {
+	text-align : left;
+	margin-top: 5px; 
+	height: 80px;
+}
+
+.containerClavier .password {
+	margin-top : 19px;
+	text-align: center;
+	float: left;
+	position: relative;
+	font-family: Arial, Verdana, Helvetica;
+	font-size: 16px;
+}
+
+.rightSide{
+	float : left;
+	position: relative;
+	width: 84px;
+	margin-left : 15px;
+}
+
+.posCorrigerClavis{
+	float : left;
+	position: relative;
+	margin-top : 2px;
+	width : 100%;
+	text-align: center;
+}
+
+.pwdFields {
+	float : left;
+	position: relative;
+	width : 100%;
+}
+
+
+/*********Modif Code - UWMC***********/
+
+.blocEtapPsw {
+	background-color: #ECEFF6;
+	padding : 20px 0;
+	text-align: center;
+	margin-top: 25px;
+}
+
+.blocEtapPswSelected {
+	background-color: #CCF2FC;
+}
+
+.etapPswTitle {
+	height: 40px;
+    margin-bottom: 15px;
+}
+
+.etapPswNum {
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    margin-top: -20px;
+    overflow: hidden;
+}
+
+.etapPswNum2 {
+    color: #FFFFFF;
+    font-size: 39px;
+    font-weight: bold;
+	border: 4px solid #FFFFFF;
+    border-radius: 30px 30px 30px 30px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    top : -4px;
+    left : -7px;
+}

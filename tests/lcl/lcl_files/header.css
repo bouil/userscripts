@@ -1,0 +1,96 @@
+/** headerPage **/
+#componentContainer{
+	min-height: 600px;
+}
+#top {
+	height: 63px;
+	border-bottom-width : 7px;
+	border-bottom-style : solid;
+	min-width: 955px;
+}
+.headerPage{
+	color:#ffffff;
+	margin: auto;
+	font-family : 'Arial';
+	font-size:  11px;
+}
+.headerPage .logoLCL {
+	float: left;
+	height:70px;
+}
+.headerPage ul {
+	list-style-type: none;
+	padding-top:14px;
+	margin : 0;
+	padding-left : 10px;
+}
+.headerPage ul .styleLi{
+	background-image:url(/SCUW/images/arrow-jaune.png);
+	background-repeat: no-repeat;
+	background-position: 0 0.4em;
+}
+.headerPage ul .derConnex{
+	color:#ffd200;
+	font-weight: normal;
+}
+
+.headerPage ul .dateDerConnex{
+	color:#ffffff;
+	font-family : 'Arial';
+	padding-top:1px;
+	font-weight: normal;
+	cursor:pointer;
+	text-decoration: none;
+}
+.headerPage ul .dateDerConnex:hover{
+	text-decoration:underline;
+}
+.headerPage ul .dateDerConnex:VISITED{
+	text-none;
+}
+
+.headerPage ul a{
+	cursor:pointer;
+	padding-left : 8px;
+	color:#ffffff;
+	font-family : 'Arial';
+	font-size:  11px;
+	text-decoration: none;
+}
+.headerPage ul a:hover{
+	color:#ffffff;
+	text-decoration:underline;
+}
+.headerPage ul a:VISITED{
+	text-none;
+}
+
+.siteContainer {
+	margin: auto;
+}
+
+
+.headerPage .divHeadDeconnexion{
+	padding-top: 14px;
+	margin : 0;
+}
+.headerPage .divHeadDeconnexion a {
+	cursor:pointer;
+	margin: 0;
+	font-weight: 600;
+	cursor:pointer;
+	color:#ffffff;
+	text-decoration: none;
+	float:right;
+	padding-right: 25px;
+}
+
+.headerPage .divHeadDeconnexion a:hover{
+	text-decoration:underline;
+}
+.headerPage .divHeadDeconnexion a img{
+	padding: 0;
+	margin: 0;
+	position: absolute;
+}
+/** headerPage **/

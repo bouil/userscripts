@@ -1,0 +1,95 @@
+.fondFooter {
+			clear: both;
+			background: #f6f3ef;
+			margin : 0;
+			padding : 0;
+			min-height:135px;
+			/* Anciens navigateurs */
+				background: #f6f3ef url("/SCUW/images/footer/fondFooter-bg.png") repeat-x top;
+				-o-background-size: 100% 100%;
+				-moz-background-size: 100% 100%;
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+				
+				/* Navigateurs récents */
+				background-image: -moz-linear-gradient(
+					top,
+					#CFC9C2,
+					#ece9e5 10%,
+					#f6f3ef
+				);
+				background-image: -webkit-gradient(
+					linear,
+					left top, left bottom,
+					from(#CFC9C2),
+					to(#f6f3ef),
+					color-stop(0.1, #ece9e5)
+				);
+}
+
+.footer {
+			float: left;
+			text-align : left;
+			color:#62615f;
+			font-family : 'Arial';
+			font-weight: 600;
+			margin:0;
+			width:100%;
+}
+
+.blocULFoot{
+			list-style-type: none;
+			padding-top:8px;
+			float: left;
+			text-indent: 0;
+			min-width : 10%;
+			margin:0;
+}
+.blocULImp{
+			list-style-type: none;
+			padding-top:8px;
+			min-width : 10%;
+			margin:0;
+}
+.titreColonneFooter{
+			font-size:  12px;
+			text-indent: 0;
+}
+.texteLienFooter{
+			color:#62615f;
+			font-family : 'Arial';
+			cursor:pointer;
+			font-weight: normal;
+			font-size:  11px;
+			text-decoration: none;
+}
+.texteColonneImp{
+			font-size:  12px;
+			padding-left: 20px;
+			cursor:pointer;
+}
+.texteColonneImp:hover{
+			text-decoration:underline;
+}
+.texteColonneImp:visited{
+			text-none;
+}
+#Impression{
+		background-image:url(/SCUW/images/footer/print.gif);
+		background-repeat: no-repeat;
+}
+#Calculette{
+		background-image:url(/SCUW/images/footer/calculette.gif);
+		background-repeat: no-repeat;
+		background-position: 0.1em 0;
+}
+#texteLien:hover{
+			text-decoration:underline;
+}
+#texteLien:VISITED{
+			text-decoration:none;
+}
+.footerSeparateur{
+	float: left;
+	min-width:5%;
+}

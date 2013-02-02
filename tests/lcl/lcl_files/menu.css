@@ -1,0 +1,478 @@
+/** Menu **/
+#menu {
+	border-bottom : 1px solid white;
+	height: 70px;
+	min-width: 955px;
+	/* Anciens navigateurs */
+	background: #E6DED7 url("/SCUW/images/menu/fondMenu.png") repeat-x center;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Navigateurs r�cents */
+	background: -moz-linear-gradient(
+		top,
+		#E6DED7,
+		#FFFFFF 30%,
+		#FFFFFF 60%,
+		#E6DED7
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#E6DED7),
+		to(#E6DED7),
+		color-stop(0.3, #FFFFFF),
+		color-stop(0.6, #FFFFFF)
+	);
+}
+
+.menuItem {
+	border: 2px solid #D5C9BB;
+	margin-right : auto;
+	margin-top : 8px;
+	margin-bottom : 8px;
+	width: 10em;
+	height: 50px;
+	text-align: center;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	
+	/* Anciens navigateurs */
+	background: #D5C9BB url("/SCUW/images/menu/menuItem.png") repeat-x center;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%; 
+	
+	/* Navigateurs r�cents */ 
+	background: -moz-linear-gradient(
+		top,
+		#E6DED7,
+		#FFFFFF 30%,
+		#FFFFFF 60%,
+		#E6DED7
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#E6DED7),
+		to(#E6DED7),
+		color-stop(0.3, #FFFFFF),
+		color-stop(0.6, #FFFFFF)
+	);
+	font-family : 'Arial';
+	font-size:  15px;
+	font-weight: bold;
+	-webkit-box-shadow: rgba(0,0,0,.2) 0 1px 2px;
+	-moz-box-shadow: rgba(0,0,0,.2) 0 1px 2px;
+	cursor: pointer;
+	text-shadow: #fff -1px -1px 0px;
+	position: relative;	
+	z-index: 1000;	
+}
+
+.menuItem strong {
+	display: table-cell; 
+	vertical-align: middle;	
+	width: 9em;
+	height: 3.6em;
+}
+
+.menuItem .arrow {
+	display: none;
+	border-top: 9px solid;
+	border-left: 9px solid transparent;
+	border-right: 9px solid transparent;
+	border-bottom: none;
+	width: 1px;
+	text-indent: -999em;
+	margin: 0 auto 0 auto;
+}
+
+.menuItem.selected {
+	color: #fff;
+	/* Anciens navigateurs */	
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	
+	/* Nouveaux navigateurs */	
+	text-shadow: rgba(213,204,187,.2) -1px -1px 0px;		
+	-webkit-transition: all 1000ms ease-out;
+}
+
+.menuItem:hover {
+	color: #fff;
+	/* Anciens navigateurs */	
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	
+	/* Nouveaux navigateurs */	
+	text-shadow: rgba(213,204,187,.2) -1px -1px 0px;		
+	-webkit-transition: all 100ms ease-out;
+}
+
+.menuItem.selected .arrow {
+	display: block;
+}
+.menuItem.selected .chevronNav {
+	display: none;
+}
+.divMenuPopUp{
+	height : 6.4em;
+}
+.divMenuPopUpLast{
+	height : 6.4em;
+	margin-left: 3px;
+}
+.menuPopUp-left {
+	border-left: 1px solid white;
+}
+
+.menuPopUp-right {
+	border-right: 1px solid white;
+}
+
+.menuPopUp {
+	margin : auto;
+	width : 13em;
+	height: 100%;
+	float : left;
+	text-align: center;
+	background-color: #D5C9BB;
+	font-family : 'Arial';
+	font-size:  12px;
+	font-weight: bold;
+	cursor: pointer;
+	position: relative;	
+	
+	/* Anciens navigateurs */
+	background: #D5C9BB url("/SCUW/images/menu/menupopUp.png") repeat-x center;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	
+	/* nouveaux navigateurs. */
+	background: -moz-linear-gradient(
+		top,
+		#D5C9BB,
+		#ffffff 45%,
+		#D5C9BB
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#D5C9BB),
+		to(#D5C9BB),
+		color-stop(0.45, #ffffff)
+	);
+}
+.menuPopUpVide {
+		cursor: default;
+}
+.textMenuPopUp{
+		width : 13em;
+		height: 70px; 
+		vertical-align: middle;
+		display:table-cell;	
+		text-decoration: underline;
+}
+.textMenuPopUp:hover{		
+		-webkit-transition: all 100ms ease-out;
+}
+/** Sub menu **/
+
+.submenuContainer {
+	display: none;
+}
+
+.submenu {
+		margin: 0;
+		background-color: #fdfbf8;
+		-webkit-box-shadow: 5px 5px 3px #888888;
+		-moz-box-shadow: 5px 5px 3px #888888;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		border-radius: 12px;
+		z-index: 100000;
+		position : absolute;
+		width:951px;
+}
+
+.submenu h2 {
+		color: #003084;
+		padding-bottom: 10px;
+		font-family : 'Arial';
+		font-size: 14px;
+		font-weight: bold;
+    	line-height: 1;
+    	margin: 0.8em;
+}
+
+.submenu h3 {
+		font-family : 'Arial';
+		font-size:  12px;
+		font-weight: bold;
+	    line-height: 1;
+}
+.submenu ul {
+	list-style: none;
+	margin: 1em 0;
+	padding: 0;
+}
+
+.submenu ul.last {
+	border: none;
+	vertical-align: bottom;
+}
+.submenu .demiColonne0 {
+	border: none;
+	margin: 1em;
+	padding : 0;
+}
+.submenu .demiColonne1 {
+	float : left;
+	border: none;
+	margin-left: 1em;
+	margin-right:1em;
+	padding : 0;
+	width: 45%;
+}
+.submenu .demiColonne2 {
+	float : left;
+	border: none;
+	margin-right:1em;
+	padding : 0;
+	width: 44%;
+}
+.submenu ul a {
+		font-family : 'Arial';
+		font-size:  11px;
+		font-weight: normal;
+		text-decoration: none;
+		padding: 0;
+		margin: 0;
+}
+
+.submenu ul a:hover {
+		text-decoration: underline;
+}
+.submenu ul a.submenuH3Lien {
+		cursor : pointer;
+		font-family : 'Arial';
+		font-size:  12px;
+		font-weight: bold;
+		text-decoration: underline;
+		padding: 0;
+		margin: 0;
+}
+.submenu ul a.submenuH3Lien : hover{
+		cursor : pointer;
+		text-decoration: underline;
+}
+
+.submenu .submenu1 {
+		border: none;
+		margin: 0;
+		padding : 0;
+}
+
+.submenu .submenu2 {
+		margin : 0;
+		padding:0;
+		border: none;
+}
+
+.submenu .submenu3 {
+		margin : 0;
+		padding:0;
+		border: none;
+}
+
+.submenu .submenu4 {
+		margin : 0;
+		padding:0;
+		border: none;
+}
+
+.submenu4Operation {
+		margin : 0;
+		padding:0;
+		-webkit-border-radius: 0 12px 0 0;
+		-moz-border-radius: 0 12px 0 0;
+		border-radius: 0 12px 0 0;
+		border-radius: 0 12px 0 0;
+		background-color: #f9f1e6;
+		min-height: 100px;
+}
+.submenuOperationCol{
+		width : 231px;
+}
+
+.submenu4Operation h2 {
+		font-family : 'Arial';
+		font-size:  14px;
+		font-weight: bold;
+		padding-bottom : 10px;
+		line-height: 1;
+    	margin: 0.8em;
+}
+
+.submenu4Operation h3 {
+		font-family : 'Arial';
+		font-size:  12px;
+		font-weight: bold;
+}
+.submenu4Operation ul a {
+		font-family : 'Arial';
+		font-size:  11px;
+		font-weight: normal;
+		padding: 0;
+		margin: 0;
+}
+
+.submenu4Operation ul a:hover {
+		text-decoration: underline;
+}
+.submenu4Operation ul a .submenuH3Lien {
+		cursor : pointer;
+		font-family : 'Arial';
+		font-size:  12px;
+		font-weight: bold;
+		text-decoration: underline;
+		padding: 0;
+		margin: 0;
+}
+.submenu ul a .submenuH3Lien : hover{
+		cursor : pointer;
+		text-decoration: non;
+}
+.submenu hr {
+		clear: both;
+		visibility: hidden;
+}
+.submenuDerColonne3 {
+		width : 311px;
+		float: right;
+}
+.submenuDerColonne4 {
+		width : 231px;
+		float: right;
+}
+.submenuZoneMkt {
+		margin-bottom: 0;
+		bottom: 0;
+		width : 100%;
+		position:relative;
+}
+.submenuZoneMkt .zoneMkt {
+		margin-bottom: 0;
+		float: right;
+		width : 100%;
+}
+
+.submenuZoneMkt .zoneMkt .submenuDerColonne3 {
+		margin-bottom: 0;
+		bottom: 0;
+		float: right;
+		width : 311px;
+}
+.submenuZoneMkt .zoneMkt .submenuDerColonne4 {
+		margin-bottom: 0;
+		bottom: 0;
+		float: right;
+		width : 231px;
+}
+.submenuZoneMkt .zoneMkt a.zoneMktCol{
+		float : left;
+		bottom: 0;
+		border: 0;
+		margin:0;
+		position : relative;
+}
+.submenuZoneMkt .zoneMkt a.zoneMktDbleCol{
+		float : right;
+		bottom: 0;
+		border: 0;
+		display: block;
+	    margin: 0 auto;
+		position : relative;
+}
+.submenuZoneMkt .zoneMkt img{
+	    margin-left: 5px;
+	    margin-right: 5px;
+}
+.submenuZoneMkt .zoneMkt .zoneMktDbleCol img{
+	     margin: 0 auto;
+}
+.submenuZoneMkt .zoneMkt .zoneMktColLast img{
+	     margin: 0 5px 0 -5px;
+}
+#lienAccueil{
+		display:table-cell;	
+		text-decoration: none;
+}
+#lienAccueil:hover{
+		text-decoration: none;
+}
+
+.chevronNav {
+    background-image: url("/SCUW/images/home/chevron-bottom-pro.png");
+     background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    float: left;
+    height: 32px;
+    width: 32px;
+    margin: 0 auto;
+    position: absolute;
+    top: 23px;
+}
+
+/*** Search ***/
+
+.ui-autocomplete {
+	width: 235px !important;
+	z-index: 1001 !important;
+	list-style: none outside none;
+	padding: 5px !important;
+	border-width: 1px !important;
+	position: absolute !important;
+}
+.ui-autocomplete li a {
+	display: block;
+	padding: 0 5px;
+	color: #003084; /*A décliner CLI/CLA/ELCL:".submenu ul a"*/
+	font-family: 'Arial';
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    margin-bottom: 3px;
+}
+.ui-autocomplete li a.ui-state-hover {
+	cursor:pointer;
+	background: none;
+	border: none;
+	text-decoration: underline;
+}
+#searchBlock {
+	padding-top: 10px
+}
+
+#searchBEL {
+	height: 23px;
+	border-radius:8px;
+	text-align: center;
+	border: 1px solid #D5C9BB;
+	width: 132px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+	margin-top: 11px;
+}

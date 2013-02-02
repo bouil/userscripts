@@ -1,0 +1,736 @@
+body,table,tr,td,a {
+	font-family: "arial";
+	font-size: 12px;
+	color: #003366;
+}
+
+.hidePsp {
+	display: none;
+}
+h1 {
+	color: #1F368B;
+	font-size: 2em;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, Geneva, Swiss, SunSans-Regular;
+	margin-bottom: 1em;
+	margin-top: 0.5em;
+}
+
+a:hover,a:focus {
+	color: #1B3685;
+}
+
+select {
+	margin: 0;
+}
+
+h3 {
+	font-size: 1.5em;
+	line-height: 1;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+	color: #336699;
+}
+
+h5 {
+	color: #003366;
+}
+
+label {
+	font-weight: normal;
+}
+
+p {
+	margin: 0;
+}
+
+strong {
+	font-weight: bold;
+}
+
+.erreur {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+.blocErreurVel {
+border-top:1px solid #B2AFC5;
+padding-bottom:45px;
+padding-top:45px;
+}
+
+.blocErreurVel  p  { 
+	color: #1f368b; 
+	line-height: 18px; 
+	margin: 0; 
+	padding: 7px 7px 7px 60px; 
+}
+
+.msgErreurVel{ 
+	background-color: #feeaec; 
+	background-image: url("/SCUW/images/attention_picto_jaune.gif"); 
+	background-repeat: no-repeat; 
+	background-position: left top;
+	margin-bottom: 20px;  
+	border: solid 1px #aa2a41
+}
+
+.msgErreurVel img{ 
+	padding-left: 20px;
+}
+
+.error {
+	-moz-border-radius: 8px;
+	background: -moz-linear-gradient(top, #FF9F9F, #FF4F4F);
+	font-weight: bold;
+	color: white;
+	text-shadow: 0px -1px 1px #000, 0px 1px 1px white;
+	-moz-box-shadow: 1px 1px 5px #000;
+	display: none;
+}
+
+.infosLegales {
+	font-size: 10px;
+	color: #999999;
+}
+
+.btn_radio {
+	height: 25px;
+}
+
+input[type=radio] {
+	margin-right: 0.8em;
+	margin-top: 0;
+}
+
+input[type=text] {
+	margin-top: 0;
+}
+
+input[type="password"] {
+	margin-top: 0;
+}
+
+input[type="password"] {
+	background-color: #FFFFFF;
+	border: 1px solid #BBBBBB;
+}
+
+.dd_Content {
+	margin-left: 2.5em;
+	font-size: 0.9em;
+}
+
+#componentContainer {
+	min-height: 600px;
+}
+
+.pictoAide {
+	display: inline-block;
+	margin-left: 0.1em;
+	height: 18px;
+	width: 18px;
+}
+
+.pictoDl {
+	display: inline-block;
+	margin-left: 0.1em;
+	height: 15px;
+	width: 15px;
+}
+
+.lienChevron {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.chevron {
+	margin-right: 0.3em;
+	margin-left: 0.5em;
+}
+
+.tri {
+	text-decoration: none;
+}
+
+/*
+	*******************
+	****A SUPPRIMER****
+	*******SVP!********
+	*******************
+*/
+	/* Mise en forme pour les libellés au dessus des champs input (cf Virement - Saisie à la volée) */
+input.ptLibInput {
+	margin-top: 0;
+	font-size: inherit;
+}
+
+.ptLibInput {
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+	font-size: 7pt;
+}
+
+.libInputSpecial {
+	padding-top: 1.2em;
+}
+
+/*Fin mise en forme pour les libellés au dessus des champs input.*/
+
+#framePublication {
+	overflow: hidden;
+}
+
+ul,ol {
+	margin-bottom: 0;
+}
+
+ul ul {
+	list-style-type: square;
+}
+
+/* Pour centrer un element, de type text ou bloc (img compris). */
+.centrer {
+	text-align: center;
+	display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.legende {
+	color: #797979;
+}
+
+.leplus {
+	background-color: #85C2E4;
+	text-align: center;
+	width: 100%;
+	border-style: solid;
+}
+
+.xiti {
+	position: absolute;
+}
+
+/* ToolTip temp*/
+.autoTooltip,.tooltipAide,.tooltipWarning {
+	position: relative;
+	display: inline;
+}
+
+/*Pour supprimer les effets sur la font dans UWLM*/
+
+.pageTousMouvements .autoTooltip { 
+	line-height: normal;
+	font-weight: normal;
+}
+
+.autoTooltipIE {
+	z-index: 100;
+}
+
+.alignCenterRightToolTip{
+	float:right;
+}
+
+.tooltipContent, .tooltipContentWarning {
+	display: block;
+	visibility: hidden;
+	position: absolute;
+	background-color: #fff;
+	top: 0;
+	width: 320px;
+	z-index: 100;
+	color: #1f368b;
+	border: 1px solid #000;
+	opacity: 0;
+	-webkit-transition-duration: 500ms;
+	-moz-transition-duration: 500ms;
+	-o-transition-duration: 500ms;
+	transition-duration: 500ms;
+	font-size:12px;
+}
+
+.tooltipRight {
+	left: 20px;
+}
+
+.tooltipLeft {
+	right: 22px;
+}
+
+div.autoTooltip:hover div.tooltipContent,div.tooltipAide:hover div.tooltipContentAide,div.tooltipWarning:hover div.tooltipContentWarning
+	{
+	visibility: visible;
+	opacity: 1;
+}
+
+.tooltipContent>*, .tooltipContentWarning>* {
+	padding: 5px;
+}
+
+.tooltipContent div,.tooltipContentAide div, .tooltipContentWarning div {
+	margin: 5px;
+}
+
+.tooltipContent h4,.tooltipContentAide h4,.tooltipContentWarning h4 {
+	color: #fff;
+	background-color: #000;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+@page :right {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+@media print {
+	header,footer,#validationFilterReportControl,.fondFooter,.headerPage {
+		display: none;
+	}
+	h1,body,th,td,a {
+		color: #000000;
+	}
+	a:link :after,a:visited :after,a:after {
+		display: none;
+	}
+}
+
+
+.showPrintBlock{
+	display:none;
+}
+
+.displayBlock {
+	display: block;
+}
+
+.displayNone {
+	display: none;
+}
+
+.alignRight {
+	float : right;
+}
+.tooltipContentAide {
+	display: block;
+	visibility: hidden;
+	position: absolute;
+	background: transparent url(/SCUW/images/toolTip/bg_tooltip.gif)
+		no-repeat scroll 0 0;
+	padding: 5px 0 5px 20px;
+	top: 0;
+	width: 200px;
+	left: 20px;
+	z-index: 50000;
+	opacity: 0;
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	-webkit-transition-duration: 500ms;
+	-moz-transition-duration: 500ms;
+	-o-transition-duration: 500ms;
+	transition-duration: 500ms;
+}
+
+.msgInfoPage {
+	float: right;
+	margin-bottom: 1em;
+	margin-top: 12px;
+}
+
+.attTitreTxt {
+	color: #FFCC00;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: -32px;
+	margin-left: 38px;
+	text-align: left;
+}
+
+.dematLibRech {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.dematMsgNoResult {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.dematTypeDocument {
+	width: 374px;
+}
+
+.scrollDiv {
+	overflow: auto;
+}
+
+/**********************************************************/
+/***  correction du bug d'allignement des champs  *********/
+/****  				de saise UWCC					******/
+/*********************************************************/
+.allignChamp1 {
+	height: 30px; 
+	line-height: 30px;
+}
+
+.allignChamp2 {
+	height: 30px; 
+	line-height: 22px;
+}
+
+hr.margBouton{
+	visibility: hidden;
+	margin: -1em 0 2em;	
+}
+
+hr.dematReleve{
+	visibility: hidden;
+}
+
+/*Gestion de l'alignement*/
+.left{
+	text-align:left;
+}
+
+.center{
+	text-align:center;
+}
+
+.right{
+	text-align:right;
+}
+
+/*taille colonne tableau UWHG*/
+#tableHisto td{
+	width: 30%;	
+}
+
+/**********************************************/
+/****			web rules + picto		   ****/
+/**********************************************/
+.custom_error {				
+	display:none;
+	float: left;
+	width: 20px;
+}
+
+/**********************************************/
+/****			style des légendes		   ****/
+/**********************************************/
+
+table#legend_list {
+	border:1px solid #CCCCCC;
+	border-bottom:none;
+	margin-top:1em;
+}
+table#legend_list td, table#legend_list th {
+	font-size:11px;
+	padding:4px;
+	border-bottom:1px solid #CCCCCC;
+	vertical-align:middle;
+	color:#808080;
+}
+table#legend_list th {
+	font-weight:normal;
+}
+
+.legtitre {
+	color: #696969;
+	background-color: #d3d3d3;
+}
+.tblpage{
+	width:16px;
+}
+
+/**********************************************/
+/**** pour cacher les checkbox d'impressions **/
+/**********************************************/
+.showPrint{
+	display:none;
+}
+
+span#erreurPage{
+	display: none;
+}
+
+
+/***************************/
+/*Pour Rendez vous en ligne*/
+/***************************/
+div.tabContour{
+	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	float : right;
+}
+
+div#divRendezVous{
+	margin-top : 26px;
+}
+
+.tabContour hr{
+	margin: 0;
+}
+
+
+table.tabRdv {
+	border-collapse: collapse;
+}
+
+table.tabRdv tbody tr th, table.tabRdv tbody tr td{
+	border: 1px solid  #CCCCCC;
+	text-align: center;	
+}
+
+.bgTabRdv, .hoverTdRdv{
+	background-color: #ECEFF6;
+}
+
+table.tabRdv tbody tr:hover{
+	background-color: #ECEFF6;
+}
+.petiteIcone {
+	width : 14px;
+	height: 14px;
+	padding-right: 5px;
+} 
+bloc  {
+    background: none repeat 0 0 #F7F7F7;
+    border-color: -moz-use-text-color #CCCCCC #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    clear: both;
+    margin: 0;
+    overflow: auto;
+   
+}
+.bloc .in  {
+    height: 100%;
+    padding: 0 0 0 16px;
+}
+.bloc .item {
+    background: none repeat 0 0 #E9EFEE;
+    float: left;
+    height: 180px;
+	margin: 8px 15px 8px 0;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    width: 175px;
+    -webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+}
+.item:hover {
+	background-color: #DCDCDC;
+	border-style: none;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+}
+item:after {
+  content:'' url(/SCUW/images/messages-bulle-pro.png);
+}
+.bloc .itemSeparateurVertical {
+    background-image: url(/SCUW/images/simulateurs/t_bg2.gif);
+    float: left;
+    height: 180px;
+	margin: 4px 4px 4px -12px;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    width: 10px;
+}
+.bloc .itemSeparateurHoriz {
+    background-image: url(/SCUW/images/simulateurs/t_bg2_horiz.gif);
+    height: 15px;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    
+}
+.bloc .title {
+    height: 100%;
+    text-align: center;
+    padding :10px;
+  
+}
+.bloc.middle  {
+     border: medium none;
+     text-align: center;
+}
+.bloc .titreMaj {
+	text-transform: uppercase;
+}
+.bloc .separateur {
+	background-image: url(/SCUW/images/simulateurs/t_bg2.gif)
+		repeat scroll 0 0;
+	height: 180px;
+	
+}
+
+/**
+Operation en cours
+**/
+
+a.l_operationEnCours {
+	background: #C0C0C0;
+}
+
+/*Fix bug calendrier*/
+#ui-datepicker-div {
+	display : none;
+}
+
+
+/*
+	uwti
+*/
+
+.uwtiModeFrais .recapLabel, .uwepListeEffet{
+	width:20%
+}
+
+.uwtiModeFrais .recapValeur {
+	width:80%
+}
+
+.uwtiModeFrais .recap {
+	table-layout: fixed;
+    word-wrap: break-word;
+}
+
+/*
+	Permet de mettre le vertical align:middle pour les éléments suivants une frame de publication.
+*/
+.verticalMiddleframeChild iframe{
+	vertical-align:middle;	
+}
+
+/* Pour ajouter une colonne dans le tag de recap. */
+.uwasTooltipTd {
+	width : 20px;
+}
+
+/* class pour l'affichage des messages erreur de l'applet de signature et du tour de l'applet */
+.signNonGrise{
+	z-index: 1002; 
+	position: absolute;
+	width: auto;
+}
+.signNonGrise .signError{
+    -moz-border-radius: 7px 7px 7px 7px;
+	-webkit-border-radius: 7px 7px 7px 7px;
+	border-radius: 7px 7px 7px 7px;
+   	background-color : #ECEFF6;
+   	color:#FF0000;
+    font-weight: normal;
+    height: 77px;
+}
+.signNonGrise .tourDeLApplet{
+	margin-bottom:15px;
+	margin-left:15px;
+	padding-right:40px;
+    -moz-border-radius: 7px 7px 7px 7px;
+	-webkit-border-radius: 7px 7px 7px 7px;
+	border-radius: 7px 7px 7px 7px;
+   	background-color : #FFFFFF;
+   	width: 600px;;	
+}
+#divSignature{
+	margin:1em;
+}
+
+/* Pour ajouter une colonne dans le tag de recap. */
+.uwasTooltipTd {
+	width: 20px;
+}
+
+.floatRight{
+	float:right;
+}
+
+.floatLeft{
+	float:left;
+}
+     
+.annotation {
+    color: #797979;
+    font-size: 10px;
+    font-family: Verdana,Arial,Helvetica,Geneva,Swiss,SunSans-Regular;
+}
+
+.printDiv {
+	text-align: center;
+}
+
+.printDiv span{	
+	text-decoration: underline;
+	cursor: pointer;	
+}
+
+.contenuPopupMesComptes {
+	width : auto;
+}
+
+.contenuPopupChequierDispo {
+	width : 695px;
+}
+
+#divMsgErreurDeconnexion{
+	width:100%;
+	text-align:center;
+}
+
+.zoneComVerticale{
+height:400px;
+}
+
+#withoutEmail {
+	background: #FFFFFF url("/SCUW/images/gradient-enveloppe-NONE.png") repeat-x top;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#AEACAC"); /* Pour IE seulement et mode gradient � linear */
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#AEACAC), color-stop(0.2, #FFFFFF));
+	background-image: -moz-linear-gradient(top center, #FFFFFF 20%, #AEACAC);
+	background-image: -o-linear-gradient(top, #FFFFFF, #AEACAC); /*uniquement en mode linear*/
+	text-underline : none;
+    border: 1px solid #868586;
+    -webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
+    border-radius: 6px 6px 6px 6px;
+    color: #444445;
+    font: bold 13px arial,sans-serif;
+    height: 15px;
+    width: 57px;
+    padding: 3px;
+    line-height: 15px;
+    position:relative;
+    float:left;
+}
+
+.withoutTextDecoration{
+	text-decoration : none;	
+}
+
+#withEmail {
+	font: bold 13px arial,sans-serif;
+    height: 15px;
+    width: 57px;
+    padding: 3px;
+    line-height: 15px;
+    position:relative;
+    float:left;
+    text-underline : none;
+}
+
+#enveloppeHome{
+	position: absolute;
+    right: 4px;
+    top: -1px;
+    width: 60%;
+}

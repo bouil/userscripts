@@ -1,0 +1,258 @@
+/* 
+	gle css
+*/
+
+header, footer, #validationFilterReportControl, .fondFooter, .headerPage {
+	display : none;
+}
+	
+h1, body, th, td, a{
+	width:auto;
+	color: #000000;
+}
+	
+a:link:after, a:visited:after, a:after
+{
+	display: none;
+}
+
+.lienChevron{
+	color: #000000;
+}
+
+span#erreurPage{
+	display: none;
+}
+
+/***********************************************
+ Css � appliquer lors de l'impression pour UWLM
+***********************************************/
+ul, ol{
+	margin: 0 10cm 0cm 0.5cm;
+}
+
+a:link, a:visited  {
+	text-decoration: none;
+	background: none repeat scroll 0 0 transparent;
+    font-weight: normal;
+}
+	
+.CssNoPrint, .ongletGauche li, .ongletDroite li, .telechargerEct, .tagTab img, .autoTooltip{
+	display: none;
+}
+
+.underlined td[colspan="2"]{
+	display: none;
+}
+
+.tagTab, td, tr, th {
+	border: 1px solid #000000;
+	border-collapse: collapse;
+	width: 600px;
+}
+
+.tabUWLM .mntHeader{
+	text-align: left;
+	padding: 3px;
+}
+
+.mntColumnContent, .mntHeader{
+	text-align: right;
+	padding: 3px;
+}
+
+.dateColumnContent{
+	text-align: center;
+}
+
+/*************************************************************/
+/** Permet de supprimer le coté droit d'une cellue de titre **/
+/*************************************************************/
+.suppBorderTh{
+	border-right: 1px hidden white;
+}
+
+.soldeHeader, .enteteTabNormal span{
+	font-weight: bold;
+}
+
+.hidden, .displayNone, .pagination{
+	display:none;
+}
+
+.noDataLigne{
+	text-align:right;
+	padding: 3px;
+}
+
+.showPrint{
+	display:marker;
+}
+
+.showPrintBlock{
+	display:block;
+}
+
+
+/***********************************/
+/** CSS pour l'impression de UWLM **/
+/***********************************/
+
+.tabUWLM .mntColumnTitle {
+	min-width: 15%;
+}
+
+.tabUWLM .dateColumnTitle {
+	min-width: 15%;
+}
+
+.tabUWLM .libMouvColumnTitle {
+	min-width: 45%;
+}
+
+.tabUWLM .dateColumnContent {
+   	text-align: center;
+   	padding: 1px;
+   	min-width: 15%;
+
+}
+
+.tabUWLM .opLibColumnContent {
+   	text-align: left;
+   	min-width: 45%;
+}
+
+.tabUWLM .mntColumnContent {
+   	text-align:right;
+   	min-width: 15%;
+}
+
+.titleCELPEL{
+	font-weight: bold;
+}
+
+th .titleTab .soldeHeader{ display: table-cell; }
+
+.tabUWLM .rightUWLM{
+	text-align:right;
+	width: 60% !important;
+}
+
+.tabUWLM .noClass{
+	width: 18% !important;
+	text-align:right;	
+}
+
+.tabUWLM .rightUWLM2{
+	text-align:right;
+	width: 20% !important;
+}
+
+
+/*************************************************************/
+/** 						Pour UWCB						**/
+/*************************************************************/
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+
+/*************************************************************/
+/** 						Pour UWCA						**/
+/*************************************************************/
+
+.curentCard {
+	display: block;
+}
+
+.uwca .span-10 {
+	width: 395px;
+	float: left;
+    margin-right: 5px;
+}
+
+.uwca .span-13 {
+	float: left;
+    margin-right: 5px;
+    width: 515px;
+}
+
+.uwca .span-8 {
+	width: 315px;
+	float: left;
+    margin-right: 5px;
+}
+
+.uwca .push-2 {
+	margin: 0 -80px 1.5em 80px;
+    position: relative;
+	float: left;
+    margin-right: 5px;
+}
+
+.uwca .prepend-1 {
+    padding-left: 40px;
+}
+
+.uwca #debut {
+	background : none;
+}
+
+.uwca #carousel_inner {
+	height: 160px;
+}
+
+/*************************************************************/
+/** 						Pour UWVI						**/
+/*************************************************************/
+#legend_list{
+	display: none;
+}
+
+.uwvi .span-24{
+	float: left;
+	margin-right: 5px;
+	width: 600px;
+}
+
+.uwvi .totalRight{
+	text-align: right;	
+}
+
+#printDiv {
+	display: none;
+}
+
+.impressionPageNone{
+	display : none;
+}
+
+.ui-dialog-titlebar {
+	display : none;
+}
+.ui-widget-overlay {
+	display: none;
+}
+
+.hidePsp{
+	display : none;
+}
+@page :first {
+	margin-left: 1in;
+}
+@page :left {
+    margin-left: 1in;
+    margin-right: 0.5in;
+}
+@page :right {
+    margin-left: 0.5in;
+    margin-right: 1in;
+}
+.tableTr td {
+	border: 1px solid;
+}
