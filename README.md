@@ -2,7 +2,7 @@
 
 ## Build
 
-You will need [sprockets|https://github.com/sstephenson/sprockets]
+You will need [sprockets](https://github.com/sstephenson/sprockets)
 
     ./build.sh
 
