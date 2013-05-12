@@ -1,110 +1,212 @@
 //= require parts/LaBanquePostaleHeader.js
-//= require parts/Md5.js
 
-var scriptNumber = "94023";
-var scriptHome = "http://userscripts.org/scripts/show/" + scriptNumber;
+var debug = false;
+
+var hashToNumber = new Object();
+// firefox
+hashToNumber[-1508513256] = -1;
+hashToNumber[-1532988814] = 0;
+hashToNumber[-1295019928] = 1;
+hashToNumber[1259005054]  = 2;
+hashToNumber[839745428]   = 3;
+hashToNumber[1608492086]  = 4;
+hashToNumber[-597409198]  = 5;
+hashToNumber[1682182155]  = 6;
+hashToNumber[1682894231]  = 7;
+hashToNumber[1530826838]  = 8;
+hashToNumber[-1257675265] = 9;
+
+function hashCode(s){           // djb2
+  return s.split("").reduce(function(a,b){
+    a=((a<<5)-a)+b.charCodeAt(0);
+    return a&a;                 // Convert to 32bit integer
+  },0);
+}
+
+function metaData(str) {
+  if ("undefined" !== typeof(GM_info))
+    return GM_info.script[str];
+  else
+    return GM_getMetadata(str);
+}
+
+function image2number(imageDataBase64) {
+  var imageHash = hashCode(imageDataBase64);
+  var number = hashToNumber[imageHash];
+  return number;
+};
+
+function decodeGrid(grid) {
+
+  const kGridSize = 4;
+  const kCellHeight = 35; // chaque case chiffre fait kCellHeight px de côté sans la bordure de 1px
+  const kBorderSize = 2;
+
+  var canvas, ctx, imageData;
+
+  let n2p = new Object();
+
+  for (let y=0; y<kGridSize; y++) {
+    for (let x=0; x<kGridSize; x++) {
+      canvas = document.createElement("canvas");
+      canvas.setAttribute("width", kCellHeight);
+      canvas.setAttribute("height", kCellHeight);
+      canvas.setAttribute("style", "display: inline; border: 1px solid red;");
+      ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = "rgb(255,255,100)";
+      ctx.fillRect(0, 0, kCellHeight, kCellHeight);
+
+      // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+      ctx.drawImage(grid,
+                    (kCellHeight+kBorderSize)*x,
+                    (kCellHeight+kBorderSize)*y,
+                    kCellHeight,
+                    kCellHeight,
+                    0, 0, kCellHeight, kCellHeight); // dst
+      imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      // no need to convertColor(imageData) here. see http://userscripts.org/scripts/show/126488 - FreeMobile TinyAuth
+      ctx.putImageData(imageData, 0, 0);
+      var imageDataBase64 = canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "");
+      var number = image2number(imageDataBase64);
+      var gridPosition = (y * kGridSize + x);
+
+      if (debug) {
+        var br = document.createElement("br");
+        document.body.appendChild(br);
+        document.body.appendChild(canvas);
+        numberElement = document.createElement("span");
+        numberElement.setAttribute("style", "border-bottom: 1px solid red;");
+        numberElement.innerHTML = " row=" + y + ";col=" + x +
+          ";imgNumber=" + gridPosition +
+          ";hash=" +
+          hashCode(imageDataBase64) + " = " +
+          number;
+        document.body.appendChild(numberElement);
+        document.body.appendChild(br);
+      }
+
+      if (number != -1) {
+        n2p[number] = gridPosition;
+      }
+
+      if (number < -1 || number > 9) {
+        alert("Décodage de la grille échoué " + number);
+        throw new Error("Décodage échoué.");
+      }
+
+    }
+  }
+
+  if (debug) {
+    console.log("Number -> Grille =");
+    console.log(n2p);
+  }
+
+  for(n=0;n<10;n++){
+    if (typeof n2p[n] == "undefined"){
+      alert("Grille non decodee pour le chiffre " + n + ". Essayez de mettre a jour le script.");
+      break;
+    }
+  }
+
+  return n2p;
+}
 
 /**
-Inspired by 
-	Finance::Bank::LaPoste - Check your "La Poste" accounts from Perl
-	http://search.cpan.org/~pixel/Finance-Bank-LaPoste-7.03/lib/Finance/Bank/LaPoste.pm
-*/
+ * replaces the img/map grid with a simple password input. The login input
+ * remains unchanged.
+ */
+function customizeUi(grid) {
+  var loginInput = document.getElementById("val_cel_identifiant");
 
-/**** START of getBase64Image found @ http://stackoverflow.com/questions/934012/get-image-data-in-javascript/934925#934925 - License CC BY-SA http://creativecommons.org/licenses/by-sa/2.5/ 
-		by http://stackoverflow.com/users/2214/matthew-crumley
-*/
+  var divContenuBloc = loginInput.parentNode;
+  var newPasswordLabel = document.createElement("label");
+  newPasswordLabel.setAttribute("for", "gm_password");
+  newPasswordLabel.setAttribute("id", "gm_labelpassword");
+  newPasswordLabel.innerHTML = "Saisir le mot de passe";
+  divContenuBloc.appendChild(newPasswordLabel);
 
-function getBase64Image(img) {
-    // Create an empty canvas element
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
+  var newPasswordInput = document.createElement("input");
+  newPasswordInput.setAttribute("type", "password");
+  newPasswordInput.setAttribute("id", "gm_password");
+  newPasswordInput.setAttribute("name", "gm_password");
+  newPasswordInput.setAttribute("autocomplete", "On");
+  newPasswordInput.setAttribute("maxlength","6");
+  newPasswordInput.setAttribute("placeholder", "mot de passe");
+  divContenuBloc.appendChild(newPasswordInput);
 
-    // Copy the image contents to the canvas
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
+  var newSubmit = document.createElement("input");
+  newSubmit.setAttribute("type", "submit");
+  newSubmit.setAttribute("value", "VALIDER");
+  newSubmit.style.height = "2em";
+  divContenuBloc.appendChild(newSubmit);
 
-    // Get the data-URL formatted image
-    // Firefox supports PNG and JPEG. You could check img.src to guess the
-    // original format, but be aware the using "image/jpg" will re-encode the image.
-    var dataURL = canvas.toDataURL("image/png");
+  // add some info about this script
+  var about = document.createElement("div");
+  var ptmp = document.createElement("h3");
+  ptmp.innerHTML = metaData("name");
+  about.appendChild(ptmp);
+  ptmp = document.createElement("p");
+  ptmp.innerHTML = "Version " + metaData("version");
+  about.appendChild(ptmp);
+  divContenuBloc.appendChild(about);
 
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  document.getElementById("motDePasseBloc").style.display = "none";
+  loginInput.focus();
+
+  return [newSubmit, newPasswordInput];
 }
 
-/**** END of getBase64Image found @ http://stackoverflow.com/questions/934012/get-image-data-in-javascript/934925#934925 - License CC BY-SA http://creativecommons.org/licenses/by-sa/2.5/ */
+/**
+ * attach the submit handler, that translates the password to a positional
+ * string, and feeds the dedicated hidden field with it.
+ */
+function attachSubmitHandler(map, submitElt, passwordElt) {
 
+  function createSubmitHandler(form, map, password) function(event) {
+    var password = passwordElt.value;
+    var keyboardPass = "";
+    for(i = 0 ; i < password.length ; i++){
+      var k = map[password[i]];
+      if (k < 10) k = "0" + k;
+      keyboardPass = keyboardPass + k;
+    }
+    document.getElementById("cs").value = keyboardPass;
 
-/**** START of own code 
-	License BY-SA - http://creativecommons.org/licenses/by-sa/3.0/
-	http://www.bouillon.net
-*/
+    if (debug)
+      alert("pass="+keyboardPass);
+    else
+      form.submit();
+  }
 
-function getMd5For(idx){
-	img = document.getElementById('val_cel_' + idx).firstChild.firstChild;
-	imgBase64 = getBase64Image(img);
-	return MD5(imgBase64); 
-}
-
-function go(){
-	// build MD5 => number
-	var images= new Object();
-	images["9c29588415b4dc3ac6baaee25032093a"] = 0;
-	images["a73d949e364731e80cc0f3491e8b25fa"] = 1;
-	images["98da8009219cef6a5a25af08a57716cd"] = 2;
-	images["955142caeacbd6aee5f62d77c17f753d"] = 3;
-	images["0f84ddd8fe7d26d8fbc63bb9dc49e40b"] = 4;
-	images["e622de74fdfc65326c70a3af2004d2b6"] = 5;
-	images["545fbed772b94ab380c728073c1dd7cb"] = 6;
-	images["08e749be2768c513adf4d51999ed4acd"] = 7;
-	images["dadb7ae74ff72058b6382b1cc1b1f2a2"] = 8;
-	images["76a50c079dd5b186e4a3806868c49488"] = 9;
-
-	// build number => keyboard
-	var keyboard = new Object();
-	for (i=0; i<10; i++){
-	   m = getMd5For(i);
-	   keyboard[images[m]] = i;
-	}
-	var divContenuBloc = document.getElementById("val_cel_dentifiant").parentNode;
-        var newLabel = document.createElement("label");
-	newLabel.setAttribute("for", "gm_password");
-	newLabel.setAttribute("id", "gm_labelpassword");
-	newLabel.innerHTML = "Saisir le mot de passe";
-	divContenuBloc.appendChild(newLabel);
-
-
-        var newInput = document.createElement("input");
-	newInput.setAttribute("type", "password");	
-	newInput.setAttribute("id", "gm_password");
-	newInput.setAttribute("name", "gm_password");
-	divContenuBloc.appendChild(newInput);
-
-	var newSubmit = document.createElement("input");
-	newSubmit.setAttribute("type", "button");
-	newSubmit.setAttribute("value", "VALIDER");
-	divContenuBloc.appendChild(newSubmit);
-
-	newSubmit.addEventListener('click', function(e){
-		password = newInput.value;
-		keyboardPass = "";
-		for(i = 0 ; i < password.length ; i++){
-			k = keyboard[password[i]];
-			keyboardPass = keyboardPass + k;
-		}
-		document.getElementById("cs").value = keyboardPass;
-
-		document.getElementsByTagName("form")[0].submit();
-	}, false);
-
-	document.getElementById("motDePasseBloc").style.display = "none";
-	document.getElementById("boutonBloc").style.display = "none";
-
-
+  var form = document.forms['formAccesCompte'];
+  var submitHandler = createSubmitHandler(form, map, passwordElt.value);
+  form.addEventListener('submit', submitHandler, false);
 }
 
 
-window.addEventListener('load', function(e) {
-	go();
-}, false);
+function main() {
+  var grid = document.getElementById("clavierImg");
 
+  if (!grid) {
+    alert("Aucune grille d'identification trouvee");
+    return;
+  }
+
+  if (debug) {
+    console.log("Grid is");
+    console.log(grid);
+  }
+
+  var [newSubmit, newPasswordInput] = customizeUi(grid);
+
+  var image = new Image();
+  image.onload = function() {
+    var number2GridPositionMap = decodeGrid(grid);
+    attachSubmitHandler(number2GridPositionMap, newSubmit, newPasswordInput);
+  };
+  image.src = grid.src;
+};
+
+main();
