@@ -176,7 +176,7 @@ function customizeUi(grid) {
  */
 function attachSubmitHandler(map, submitElt, passwordElt) {
 
-  function createSubmitHandler(form, map, password) return function (event) {
+  function createSubmitHandler(form, map, password){ return function (event) {
     var password = passwordElt.value;
     var keyboardPass = "";
     for(i = 0 ; i < password.length ; i++){
@@ -190,7 +190,7 @@ function attachSubmitHandler(map, submitElt, passwordElt) {
       alert("pass="+keyboardPass);
     else
       form.submit();
-  }
+  }}
 
   var form = document.forms['formAccesCompte'];
   var submitHandler = createSubmitHandler(form, map, passwordElt.value);
