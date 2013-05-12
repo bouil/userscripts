@@ -15,6 +15,18 @@ hashToNumber[1682182155]  = 6;
 hashToNumber[1682894231]  = 7;
 hashToNumber[1530826838]  = 8;
 hashToNumber[-1257675265] = 9;
+// chrome
+hashToNumber[-564694437]  = -1;
+hashToNumber[-1204837538] = 0;
+hashToNumber[-1740406708] = 1;
+hashToNumber[-1508608019] = 2;
+hashToNumber[-1624712180] = 3;
+hashToNumber[317635378]   = 4;
+hashToNumber[-1717641893] = 5;
+hashToNumber[1665132266]  = 6;
+hashToNumber[655736885]   = 7;
+hashToNumber[2072050950]  = 8;
+hashToNumber[-2068957428] = 9;
 
 function hashCode(s){           // djb2
   return s.split("").reduce(function(a,b){
@@ -44,10 +56,10 @@ function decodeGrid(grid) {
 
   var canvas, ctx, imageData;
 
-  let n2p = new Object();
+  var n2p = new Object();
 
-  for (let y=0; y<kGridSize; y++) {
-    for (let x=0; x<kGridSize; x++) {
+  for (var y=0; y<kGridSize; y++) {
+    for (var x=0; x<kGridSize; x++) {
       canvas = document.createElement("canvas");
       canvas.setAttribute("width", kCellHeight);
       canvas.setAttribute("height", kCellHeight);
@@ -155,7 +167,7 @@ function customizeUi(grid) {
   document.getElementById("motDePasseBloc").style.display = "none";
   loginInput.focus();
 
-  return [newSubmit, newPasswordInput];
+  return {newSubmit: newSubmit, newPasswordInput: newPasswordInput};
 }
 
 /**
@@ -164,7 +176,7 @@ function customizeUi(grid) {
  */
 function attachSubmitHandler(map, submitElt, passwordElt) {
 
-  function createSubmitHandler(form, map, password) function(event) {
+  function createSubmitHandler(form, map, password) return function (event) {
     var password = passwordElt.value;
     var keyboardPass = "";
     for(i = 0 ; i < password.length ; i++){
@@ -199,12 +211,12 @@ function main() {
     console.log(grid);
   }
 
-  var [newSubmit, newPasswordInput] = customizeUi(grid);
+  var customizeUiResult = customizeUi(grid);
 
   var image = new Image();
   image.onload = function() {
     var number2GridPositionMap = decodeGrid(grid);
-    attachSubmitHandler(number2GridPositionMap, newSubmit, newPasswordInput);
+    attachSubmitHandler(number2GridPositionMap, customizeUiResult.newSubmit, customizeUiResult.newPasswordInput);
   };
   image.src = grid.src;
 };
