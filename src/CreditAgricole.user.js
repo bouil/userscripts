@@ -1,5 +1,5 @@
-//= require parts/CreditAgricoleHeader.js
-//= require parts/CustomCss.js
+//#include "parts/CreditAgricoleHeader.js"
+//#include "parts/CustomCss.js"
 
 var debug = false;
 

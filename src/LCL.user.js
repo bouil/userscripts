@@ -1,5 +1,5 @@
-//= require parts/LCLHeader.js
-//= require parts/Md5.js
+//#include "parts/LCLHeader.js"
+//#include "parts/Md5.js"
 
 var start = function (jQuery) {
     var debug = false;
