@@ -38,8 +38,12 @@ function hashCode(s){           // djb2
 function metaData(str) {
   if ("undefined" !== typeof(GM_info))
     return GM_info.script[str];
-  else
+  else if ("undefined" !== typeof(GM_getMetadata))
     return GM_getMetadata(str);
+  else {
+    console.log("GM_ API unsupported");
+    return "unknown";
+  }
 }
 
 function image2number(imageDataBase64) {
