@@ -1,10 +1,12 @@
-# Various Userscripts
+# Various Userscripts to get rid of virtual keyboard on French bank websites.
 
 ## Build
 
-You will need [sprockets](https://github.com/sstephenson/sprockets)
+You will need python and Make to build the scripts.
 
-    ./build.sh
+Simply run
 
-Result files will be placed in the target/ subdirectory.
+    make
+
+Result files will be placed in the build/ subdirectory.
 
