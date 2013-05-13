@@ -1,4 +1,4 @@
-//= require parts/LaBanquePostaleHeader.js
+//#include "parts/LaBanquePostaleHeader.js"
 
 var debug = false;
 

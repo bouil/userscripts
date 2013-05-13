@@ -1,6 +1,6 @@
-//= require parts/BnpParibasHeader.js
-//= require parts/Md5.js
-//= require parts/CustomCss.js
+//#include "parts/BnpParibasHeader.js"
+//#include "parts/Md5.js"
+//#include "parts/CustomCss.js"
 
 var scriptName= GM_info.script.name
 var version = GM_info.script.version;

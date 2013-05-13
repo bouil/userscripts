@@ -1,4 +1,4 @@
-//= require parts/CreditAgricoleLorraineHeader.js
+//#include "parts/CreditAgricoleLorraineHeader.js"
 
 
 function main() {
