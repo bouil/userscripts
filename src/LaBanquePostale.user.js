@@ -4,30 +4,30 @@ var debug = false;
 
 var hashToNumber = new Object();
 // firefox
-hashToNumber[2128638187]  = -1;
-hashToNumber[-1351851654] = 0;
-hashToNumber[-501921261]  = 1;
-hashToNumber[913113212]   = 2;
-hashToNumber[1768253725]  = 3;
-hashToNumber[-277278126]  = 4;
-hashToNumber[-2095057950] = 5;
-hashToNumber[-174876805]  = 6;
-hashToNumber[-1682956010] = 7;
-hashToNumber[1387688270]  = 8;
-hashToNumber[1092263165]  = 9;
+hashToNumber[1499838977]  = -1;
+hashToNumber[-386854821]  = 0;
+hashToNumber[-44352046]   = 1;
+hashToNumber[-1844652104] = 2;
+hashToNumber[2027333567]  = 3;
+hashToNumber[-1613094677] = 4;
+hashToNumber[-1071223325] = 5;
+hashToNumber[-397500456]  = 6;
+hashToNumber[66524547]    = 7;
+hashToNumber[2021485583]  = 8;
+hashToNumber[1667821383]  = 9;
 
 // chrome
-hashToNumber[-564694437]  = -1;
-hashToNumber[-1651732861] = 0;
-hashToNumber[-1352214691] = 1;
-hashToNumber[2023185503]  = 2;
-hashToNumber[-612770415]  = 3;
-hashToNumber[600667828]   = 4;
-hashToNumber[-295522482]  = 5;
-hashToNumber[1173135910]  = 6;
-hashToNumber[-975180446]  = 7;
-hashToNumber[-431144701]  = 8;
-hashToNumber[-988143661]  = 9;
+hashToNumber[1367079729]  = -1;
+hashToNumber[1361177620]  = 0;
+hashToNumber[104477207]   = 1;
+hashToNumber[-721997744]  = 2;
+hashToNumber[1409920244]  = 3;
+hashToNumber[190752219]   = 4;
+hashToNumber[-161292196]  = 5;
+hashToNumber[1024300490]  = 6;
+hashToNumber[113276182]   = 7;
+hashToNumber[-1874617512] = 8;
+hashToNumber[528407293]   = 9;
 
 function hashCode(s){           // djb2
   return s.split("").reduce(function(a,b){
@@ -37,11 +37,11 @@ function hashCode(s){           // djb2
 }
 
 function metaData(str) {
-  if ("undefined" !== typeof(GM_info))
+  if ("undefined" !== typeof(GM_info)) {
     return GM_info.script[str];
-  else if ("undefined" !== typeof(GM_getMetadata))
+  } else if ("undefined" !== typeof(GM_getMetadata)) {
     return GM_getMetadata(str);
-  else {
+  } else {
     console.log("GM_ API unsupported");
     return "unknown";
   }
@@ -56,8 +56,8 @@ function image2number(imageDataBase64) {
 function decodeGrid(grid) {
 
   const kGridSize = 4;
-  const kCellHeight = 35; // chaque case chiffre fait kCellHeight px de côté sans la bordure de 1px
-  const kBorderSize = 2;
+  const kCellHeight = 60; // chaque case chiffre fait kCellHeight px de côté sans la bordure de...
+  const kBorderSize = 4;  // ...kBorderSize px
 
   var canvas, ctx, imageData;
 
@@ -134,30 +134,31 @@ function decodeGrid(grid) {
  * replaces the img/map grid with a simple password input. The login input
  * remains unchanged.
  */
-function customizeUi(grid) {
+function customizeUI(grid) {
+  var divBlocMdp = document.getElementById("cvs-bloc-mdp");
+
   var loginInput = document.getElementById("val_cel_identifiant");
+  loginInput.setAttribute("autocomplete", "on");
 
-  var divContenuBloc = loginInput.parentNode;
-  var newPasswordLabel = document.createElement("label");
-  newPasswordLabel.setAttribute("for", "gm_password");
-  newPasswordLabel.setAttribute("id", "gm_labelpassword");
-  newPasswordLabel.innerHTML = "Saisir le mot de passe";
-  divContenuBloc.appendChild(newPasswordLabel);
-
-  var newPasswordInput = document.createElement("input");
+  var newPasswordInput = document.getElementById("cvs-bloc-mdp-input").cloneNode(true);
+  newPasswordInput.removeAttribute("disabled");
   newPasswordInput.setAttribute("type", "password");
-  newPasswordInput.setAttribute("id", "gm_password");
-  newPasswordInput.setAttribute("name", "gm_password");
-  newPasswordInput.setAttribute("autocomplete", "On");
+  newPasswordInput.setAttribute("autocomplete", "on");
   newPasswordInput.setAttribute("maxlength","6");
-  newPasswordInput.setAttribute("placeholder", "mot de passe");
-  divContenuBloc.appendChild(newPasswordInput);
+  while (divBlocMdp.hasChildNodes()) {
+    divBlocMdp.removeChild(divBlocMdp.lastChild);
+  }
+  divBlocMdp.appendChild(newPasswordInput);
 
-  var newSubmit = document.createElement("input");
+  var oldSubmit = document.getElementById("valider");
+  var newSubmit = oldSubmit.cloneNode(true); // listeners not copied!
+    // onclick sendForm()
   newSubmit.setAttribute("type", "submit");
-  newSubmit.setAttribute("value", "VALIDER");
-  newSubmit.style.height = "2em";
-  divContenuBloc.appendChild(newSubmit);
+  newSubmit.setAttribute("id", "gm_submit");
+  newSubmit.removeAttribute("disabled");
+  newSubmit.removeAttribute("grey");
+  newSubmit.style.backgroundColor = "#004B9B";
+  oldSubmit.parentNode.replaceChild(newSubmit, oldSubmit);
 
   // add some info about this script
   var about = document.createElement("div");
@@ -167,10 +168,9 @@ function customizeUi(grid) {
   ptmp = document.createElement("p");
   ptmp.innerHTML = "Version " + metaData("version");
   about.appendChild(ptmp);
-  divContenuBloc.appendChild(about);
+  newSubmit.parentNode.appendChild(about);
 
-  document.getElementById("motDePasseBloc").style.display = "none";
-  loginInput.focus();
+  document.getElementById("val_cel_identifiant").focus();
 
   return {newSubmit: newSubmit, newPasswordInput: newPasswordInput};
 }
@@ -179,7 +179,7 @@ function customizeUi(grid) {
  * attach the submit handler, that translates the password to a positional
  * string, and feeds the dedicated hidden field with it.
  */
-function attachSubmitHandler(map, submitElt, passwordElt) {
+function attachSubmitHandler(map, passwordElt) {
 
   function createSubmitHandler(form, map, password){ return function (event) {
     var password = passwordElt.value;
@@ -189,41 +189,48 @@ function attachSubmitHandler(map, submitElt, passwordElt) {
       if (k < 10) k = "0" + k;
       keyboardPass = keyboardPass + k;
     }
-    document.getElementById("cs").value = keyboardPass;
+    document.getElementById("cs").value = keyboardPass; // hidden password
 
     if (debug)
       alert("pass="+keyboardPass);
     else
       form.submit();
-  }}
+  };}
 
   var form = document.forms['formAccesCompte'];
   var submitHandler = createSubmitHandler(form, map, passwordElt.value);
   form.addEventListener('submit', submitHandler, false);
 }
 
+function imgSrc(str) {
+  return (str.match(/url\([^\)]+\)/gi) || [""])[0].split(/[()'"]+/)[1];
+}
+
 
 function main() {
-  var grid = document.getElementById("clavierImg");
+  var elt = document.getElementById('imageclavier'),
+      style = elt.currentStyle || window.getComputedStyle(elt, false),
+      bg = style.getPropertyValue('background-image'),
+      gridSrc = imgSrc(bg);
 
-  if (!grid) {
+  if (!gridSrc) {
     alert("Aucune grille d'identification trouvee");
     return;
   }
 
   if (debug) {
     console.log("Grid is");
-    console.log(grid);
+    console.log(gridSrc);
   }
 
-  var customizeUiResult = customizeUi(grid);
+  var customizedUI = customizeUI(elt);
 
   var image = new Image();
   image.onload = function() {
-    var number2GridPositionMap = decodeGrid(grid);
-    attachSubmitHandler(number2GridPositionMap, customizeUiResult.newSubmit, customizeUiResult.newPasswordInput);
+    var number2GridPositionMap = decodeGrid(image);
+    attachSubmitHandler(number2GridPositionMap, customizedUI.newPasswordInput);
   };
-  image.src = grid.src;
+  image.src = gridSrc;
 };
 
 main();
