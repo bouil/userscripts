@@ -1,4 +1,4 @@
-PREPROC := python pp.py
+PREPROC := python2 pp.py
 
 src_dir   := src
 build_dir := build
