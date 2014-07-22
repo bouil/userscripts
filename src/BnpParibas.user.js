@@ -168,7 +168,7 @@ function submitGrid($grid) {
         var $formToSubmit = $("form[name=logincanalnet]");
         var $passwordToSubmit = $formToSubmit.find("input[name=ch5]");
         $passwordToSubmit.val($targetPasswordField.val());
-        $formToSubmit.submit();
+        $formToSubmit.get(0).submit();
     } else {
         console.log("Debug mode: no submit");
     }
