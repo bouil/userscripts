@@ -1,0 +1,26 @@
+#sas-login
+label{display:block;padding:5px
+0 10px 0}#sas-login input[type='text'],
+#sas-login input[type='password']{font-size:20px;width:100%;padding:7px
+5px;height:41px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;*behavior:url(/static/lib/polyfill/boxsizing/boxsizing.htc)}#sas-login #login-saved-label{margin-top:10px;color:#980165;font-family:Etelka;text-align:center}#sas-login #login-saved-label
+a{font-style:italic}#sas-login #login-saved-label
+span{font-size:18px;padding:7px
+5px}#sas-help-default .block
+.bd{position:relative}#sas-help-default .bd
+.btn{white-space:nowrap;overflow:hidden}#sas-login{float:right;width:400px}#sas-help{float:left;width:580px}#sas-login ul.help-links
+li{padding:7px
+0}#sas-info-client,
+#sas-info-membre{min-height:191px}#sas-login
+.memo{margin:10px
+0 5px 15px;font-size:13px;text-align:left}#sas-login
+.memo > div{padding-top:7px;padding-bottom:7px}#sas-login
+.memo
+label{display:inline-block;font-weight:normal}@media screen and (max-width : 999px){#sas-login,
+#sas-help{margin:0;width:49%}}@media screen and (max-width : 767px){#sas-login,
+#sas-help{float:none;width:auto}#sas-login{margin-right:0}#sas-info-client,
+#sas-info-membre{float:none;width:auto}.footer .footer-nav{display:none}}.login-pad{width:300px;margin-bottom:10px;border:1px
+solid #CCC;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;position:relative}.login-pad
+.pad{display:block}.login-pad .pad-bottom{padding:10px}.login-pad .input-fake-password{color:#980165;display:block;margin-bottom:10px;width:150px;font-size:34px;text-align:center;border:1px
+solid #939393;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;padding:3px
+5px;font-size:20px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;*behavior:url(/static/lib/polyfill/boxsizing/boxsizing.htc)}
+/*__END__*/
