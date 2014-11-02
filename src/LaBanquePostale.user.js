@@ -3,7 +3,20 @@
 var debug = false;
 
 var hashToNumber = new Object();
-// firefox
+// firefox img width = 189
+hashToNumber[-1043926944] = -1;
+hashToNumber[-2130428491] = 0;
+hashToNumber[-1837280483] = 1;
+hashToNumber[1026132830]  = 2;
+hashToNumber[-1698608298] = 3;
+hashToNumber[-1077831249] = 4;
+hashToNumber[2068935818]  = 5;
+hashToNumber[-1889082328] = 6;
+hashToNumber[-1249366341] = 7;
+hashToNumber[770344175]   = 8;
+hashToNumber[-1797046635] = 9;
+
+// firefox img width = 252
 hashToNumber[1499838977]  = -1;
 hashToNumber[-386854821]  = 0;
 hashToNumber[-44352046]   = 1;
@@ -16,7 +29,20 @@ hashToNumber[66524547]    = 7;
 hashToNumber[2021485583]  = 8;
 hashToNumber[1667821383]  = 9;
 
-// chrome
+// chrome img width = 189
+hashToNumber[1261568409]  = -1;
+hashToNumber[-737831289]  = 0;
+hashToNumber[-1939970274] = 1;
+hashToNumber[1633837072]  = 2;
+hashToNumber[-1476820365] = 3;
+hashToNumber[-1744932522] = 4;
+hashToNumber[311929800]   = 5;
+hashToNumber[-1780532980] = 6;
+hashToNumber[1914433817]  = 7;
+hashToNumber[-1580087094] = 8;
+hashToNumber[-1726714153] = 9;
+
+// chrome img width = 252
 hashToNumber[1367079729]  = -1;
 hashToNumber[1361177620]  = 0;
 hashToNumber[104477207]   = 1;
@@ -54,10 +80,13 @@ function image2number(imageDataBase64) {
 };
 
 function decodeGrid(grid) {
-
   const kGridSize = 4;
-  const kCellHeight = 60; // chaque case chiffre fait kCellHeight px de côté sans la bordure de...
-  const kBorderSize = 4;  // ...kBorderSize px
+  var separatorWidth = grid.width/((4*15+3));   // cell/separator proportion is 15
+  if (debug) {
+    console.log("grid width="+grid.width);
+    console.log("separatorWidth="+separatorWidth);
+  }
+  var cellWidth = separatorWidth*15; // chaque case chiffre fait cellWidth px de côté sans la bordure
 
   var canvas, ctx, imageData;
 
@@ -66,21 +95,21 @@ function decodeGrid(grid) {
   for (var y=0; y<kGridSize; y++) {
     for (var x=0; x<kGridSize; x++) {
       canvas = document.createElement("canvas");
-      canvas.setAttribute("width", kCellHeight);
-      canvas.setAttribute("height", kCellHeight);
+      canvas.setAttribute("width", cellWidth);
+      canvas.setAttribute("height", cellWidth);
       canvas.setAttribute("style", "display: inline; border: 1px solid red;");
       ctx = canvas.getContext('2d');
 
       ctx.fillStyle = "rgb(255,255,100)";
-      ctx.fillRect(0, 0, kCellHeight, kCellHeight);
+      ctx.fillRect(0, 0, cellWidth, cellWidth);
 
       // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
       ctx.drawImage(grid,
-                    (kCellHeight+kBorderSize)*x,
-                    (kCellHeight+kBorderSize)*y,
-                    kCellHeight,
-                    kCellHeight,
-                    0, 0, kCellHeight, kCellHeight); // dst
+                    (cellWidth+separatorWidth)*x,
+                    (cellWidth+separatorWidth)*y,
+                    cellWidth,
+                    cellWidth,
+                    0, 0, cellWidth, cellWidth); // dst
       imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       // no need to convertColor(imageData) here. see http://userscripts.org/scripts/show/126488 - FreeMobile TinyAuth
       ctx.putImageData(imageData, 0, 0);
@@ -227,7 +256,7 @@ function main() {
 
   var image = new Image();
   image.onload = function() {
-    var number2GridPositionMap = decodeGrid(image);
+    var number2GridPositionMap = decodeGrid(this);
     attachSubmitHandler(number2GridPositionMap, customizedUI.newPasswordInput);
   };
   image.src = gridSrc;
