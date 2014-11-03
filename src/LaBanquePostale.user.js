@@ -2,7 +2,7 @@
 
 var debug = false;
 
-var hashToNumber = new Object();
+var hashToNumber = {};
 // firefox img width = 189
 hashToNumber[-1043926944] = -1;
 hashToNumber[-2130428491] = 0;
@@ -77,7 +77,7 @@ function image2number(imageDataBase64) {
   var imageHash = hashCode(imageDataBase64);
   var number = hashToNumber[imageHash];
   return number;
-};
+}
 
 function decodeGrid(grid) {
   const kGridSize = 4;
@@ -90,7 +90,7 @@ function decodeGrid(grid) {
 
   var canvas, ctx, imageData;
 
-  var n2p = new Object();
+  var n2p = {};
 
   for (var y=0; y<kGridSize; y++) {
     for (var x=0; x<kGridSize; x++) {
@@ -260,6 +260,6 @@ function main() {
     attachSubmitHandler(number2GridPositionMap, customizedUI.newPasswordInput);
   };
   image.src = gridSrc;
-};
+}
 
 main();
