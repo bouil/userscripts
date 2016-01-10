@@ -9,24 +9,16 @@ var debug = false;
 var md5ToNumber = new Object();
 // firefox
 md5ToNumber["aa638e434ef27fc73aaa2b812c6d6940"] = -1;
-md5ToNumber["f7eff870c6bc8a211438887feecf02ba"] = 0;
-
-md5ToNumber["a3f2a856c6d100e180be2f52a331d23e"] = 1;
-md5ToNumber["5e4c5d26750e9360dd0a674e1233b12c"] = 1;
-
-md5ToNumber["859cf20afa3d16d35ca3bd96fdde8799"] = 2;
-md5ToNumber["c9a5b1f4f63bd97bb024383a9f21ff75"] = 2;
-
-md5ToNumber["735b7b06bd6e2bad29da18126b5080a7"] = 3;
-md5ToNumber["6b0223be3d4c74c95316363d49c53be2"] = 4;
-
-md5ToNumber["e589b3fbdfed390e108322d7a1d0ceca"] = 5;
-md5ToNumber["44fc31d0f093a6b41636b2ce7fd97cd8"] = 5;
-
-md5ToNumber["b4a14503a39e9b448f3c6dd0171018c8"] = 6;
-md5ToNumber["87b9a2a3958615122657a3a05b7088b0"] = 7;
-md5ToNumber["38cb00677543be37b86d1ad242e714aa"] = 8;
-md5ToNumber["e3f02c152a49876d759e74e40c71774c"] = 9;
+md5ToNumber["d56cf695d3cba3f1eebb2e1c3d29c935"] = 0;
+md5ToNumber["f27b157823f467d72f744902f1f17ae7"] = 1;
+md5ToNumber["48469730fb940ba25abe265203ba32ab"] = 2;
+md5ToNumber["0e33096667ef622fba2e2fb068340a9a"] = 3;
+md5ToNumber["483d7bc550f7476210865307c8ec2ffd"] = 4;
+md5ToNumber["466bb78ee3f36cc4fadf0f83fbc1501e"] = 5;
+md5ToNumber["2989fbdad94698cb73301790d319eb62"] = 6;
+md5ToNumber["4a33b7696dd7504349744597736c4916"] = 7;
+md5ToNumber["6e906fa35496977ff5eca837a5071183"] = 8;
+md5ToNumber["acacf48e6a07d6edd8abf1a67f439848"] = 9;
 
 
 var number2GridPosition;
@@ -179,18 +171,26 @@ function submitGrid($grid) {
     }
 };
 
-function addPasswordInput($form) {
+function addPasswordInput($form, $grid) {
     // add a password input
 
-    var $divControlGroupPassword = $(_("div"));
-    var $labelPassword = $(_("label")).attr("for", "gm_password").text("Mot de passe");
+    var $divControlGroupPassword = $(_("div")).attr("id", "gm_password_div");
+    var $labelPassword = $(_("label")).attr("for", "gm_password").text($("#login-password-label").text());
     $divControlGroupPassword.append($labelPassword);
     var $divControlPasswordInput = $(_("div"));
-    var $newInputPassword = $(_("input")).attr("type", "password").attr("name", "gm_password").attr("id",
-        "gm_password").attr("autocomplete",
-        "On").attr("maxlength",
-        "6").attr("placeholder",
-        "mot de passe");
+    var $newInputPassword = $(_("input"))
+        .attr("type", "password")
+        .attr("name", "gm_password")
+        .attr("id", "gm_password")
+        .attr("autocomplete", "On")
+        .attr("maxlength", "8")
+        .attr("tabindex", $form.find("input#login").attr("tabindex") + 1)
+        .keypress(function(event) {
+            if ( event.keyCode == 13 ) {
+                event.preventDefault();
+                submitGrid($grid);
+            }
+        });
     $newInputPassword.appendTo($divControlPasswordInput);
     $divControlGroupPassword.append($divControlPasswordInput);
     $form.find("label#login-password-label").before($divControlGroupPassword);
@@ -200,10 +200,11 @@ function addSubmitButton($form, $grid) {
     // add a submit link "button"
     var $divControlGroupSubmit = $(_("div")).addClass("control-group");
     var $divControlButtonInput = $(_("div")).addClass("controls");
-    var $newInputButton = $(_("a")).addClass("btn").addClass("btn-primary").text("Acceder aux comptes");
+    var $newInputButton = $(_("a")).addClass("btn btn-primary right").text("Accéder aux comptes")
+        .css("margin-top", "5px");
     $newInputButton.appendTo($divControlButtonInput);
     $divControlGroupSubmit.append($divControlButtonInput);
-    $form.append($divControlGroupSubmit);
+    $("#gm_password_div").after($divControlGroupSubmit);
     // bind events
     $newInputButton.bind("click", function () {
         submitGrid($grid);
@@ -212,31 +213,44 @@ function addSubmitButton($form, $grid) {
 
 function addScriptInfos($form) {
     // add some info about this script
-    var $baseline = $(_("div")).addClass("hero-unit");
+    var $baseline = $(_("div")).addClass("hero-unit left").css("margin-top", "5px");
     var $p = $(_("h3")).text(scriptName);
     $baseline.append($p);
     $baseline.append($(_("p")).addClass("muted").text("Version " + version));
     $baseline.append($(_("p")));
 
-    $form.append($baseline);
+    $("#gm_password_div").after($baseline);
+}
+
+function moveHelpLinks($form) {
+    var original = $form.find("ul.help-links");
+    original.hide();
+    original.after($("form#identification ul.help-links"));
 }
 
 function customizeUi($form, $grid) {
-    GM_addStyle(GM_getResourceText("bootstrapcss"));
-
     $form.addClass("form-horizontal");
 
-    addPasswordInput($form);
+    // Boursorama code to show the real form
+    var state = window.eval("showState('client')");
+
+    addPasswordInput($form, $grid);
 
     addSubmitButton($form, $grid);
+
+    moveHelpLinks($form);
 
     addScriptInfos($form);
 
     if (!debug) {
         $("#login-password-label").hide();
-        $("#login-password-label").next().hide();
-        $("#b3fdea3").hide();
+        // Hide pad
+        $("#login-password-label").next().next().hide();
+        // Hide warning
+        $("#login-password-label").next().next().next().hide();
     }
+
+    $form.find("input#login").focus();
 }
 
 function main() {
