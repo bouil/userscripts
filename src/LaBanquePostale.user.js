@@ -18,16 +18,16 @@ hashToNumber[-1887694506] = 9;
 
 // firefox img width = 252
 hashToNumber[1499838977]  = -1;
-hashToNumber[-386854821]  = 0;
-hashToNumber[-44352046]   = 1;
-hashToNumber[-1844652104] = 2;
-hashToNumber[2027333567]  = 3;
-hashToNumber[-1613094677] = 4;
-hashToNumber[-1071223325] = 5;
-hashToNumber[-397500456]  = 6;
-hashToNumber[66524547]    = 7;
-hashToNumber[2021485583]  = 8;
-hashToNumber[1667821383]  = 9;
+hashToNumber[2037140090]  = 0;
+hashToNumber[-1837280483] = 1;
+hashToNumber[-39504401]   = 2;
+hashToNumber[1403102968]  = 3;
+hashToNumber[702003925]   = 4;
+hashToNumber[-1495191002] = 5;
+hashToNumber[307386662]   = 6;
+hashToNumber[-88040056]   = 7;
+hashToNumber[1436389033]  = 8;
+hashToNumber[-1860708088] = 9;
 
 // chrome img width = 189
 hashToNumber[1261568409]  = -1;
