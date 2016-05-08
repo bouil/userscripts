@@ -16,7 +16,7 @@ hashToNumber[1544770534]  = 7;
 hashToNumber[1544029925]  = 8;
 hashToNumber[-1887694506] = 9;
 
-// firefox img width = 252
+// firefox img width      = 252
 hashToNumber[1499838977]  = -1;
 hashToNumber[2037140090]  = 0;
 hashToNumber[-1837280483] = 1;
@@ -80,13 +80,15 @@ function image2number(imageDataBase64) {
 }
 
 function decodeGrid(grid) {
-  const kGridSize = 4;
-  var separatorWidth = grid.width/((4*15+3));   // cell/separator proportion is 15
+  let kGridSize = 4;
+  let kCellToSeparatorProportion = 15;
+  var separatorWidth = grid.width/((4*kCellToSeparatorProportion+3));
   if (debug) {
     console.log("grid width="+grid.width);
     console.log("separatorWidth="+separatorWidth);
   }
-  var cellWidth = separatorWidth*15; // chaque case chiffre fait cellWidth px de côté sans la bordure
+  // each cell has cellWidth px width without the border
+  var cellWidth = separatorWidth*kCellToSeparatorProportion;
 
   var canvas, ctx, imageData;
 
@@ -111,9 +113,11 @@ function decodeGrid(grid) {
                     cellWidth,
                     0, 0, cellWidth, cellWidth); // dst
       imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      // no need to convertColor(imageData) here. see http://userscripts.org/scripts/show/126488 - FreeMobile TinyAuth
+      // no need to convertColor(imageData) here.
+      // See http://userscripts.org/scripts/show/126488 - FreeMobile TinyAuth
       ctx.putImageData(imageData, 0, 0);
-      var imageDataBase64 = canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "");
+      var imageDataBase64 = canvas.toDataURL("image/png")
+        .replace(/^data:image\/(png|jpg);base64,/, "");
       var number = image2number(imageDataBase64);
       var gridPosition = (y * kGridSize + x);
 
@@ -255,11 +259,11 @@ function main() {
   var customizedUI = customizeUI(elt);
 
   var image = new Image();
+  image.src = gridSrc;
   image.onload = function() {
     var number2GridPositionMap = decodeGrid(this);
     attachSubmitHandler(number2GridPositionMap, customizedUI.newPasswordInput);
   };
-  image.src = gridSrc;
 }
 
 main();
