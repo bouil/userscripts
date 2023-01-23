@@ -3,57 +3,18 @@
 var debug = false;
 
 var hashToNumber = {};
-// firefox img width = 189
-hashToNumber[1499838977]  = -1;
-hashToNumber[370540883]   = 0;
-hashToNumber[-44352046]   = 1;
-hashToNumber[581656633]   = 2;
-hashToNumber[1649454864]  = 3;
-hashToNumber[-1351301404] = 4;
-hashToNumber[-1575557345] = 5;
-hashToNumber[1123413039]  = 6;
-hashToNumber[1544770534]  = 7;
-hashToNumber[1544029925]  = 8;
-hashToNumber[-1887694506] = 9;
 
-// firefox img width      = 252
-hashToNumber[1499838977]  = -1;
-hashToNumber[2037140090]  = 0;
-hashToNumber[-1837280483] = 1;
-hashToNumber[-39504401]   = 2;
-hashToNumber[1403102968]  = 3;
-hashToNumber[702003925]   = 4;
-hashToNumber[-1495191002] = 5;
-hashToNumber[307386662]   = 6;
-hashToNumber[-88040056]   = 7;
-hashToNumber[1436389033]  = 8;
-hashToNumber[-1860708088] = 9;
-
-// chrome img width = 189
-hashToNumber[1261568409]  = -1;
-hashToNumber[-737831289]  = 0;
-hashToNumber[-1939970274] = 1;
-hashToNumber[1633837072]  = 2;
-hashToNumber[-1476820365] = 3;
-hashToNumber[-1744932522] = 4;
-hashToNumber[311929800]   = 5;
-hashToNumber[-1780532980] = 6;
-hashToNumber[1914433817]  = 7;
-hashToNumber[-1580087094] = 8;
-hashToNumber[-1726714153] = 9;
-
-// chrome img width = 252
-hashToNumber[1367079729]  = -1;
-hashToNumber[1361177620]  = 0;
-hashToNumber[104477207]   = 1;
-hashToNumber[-721997744]  = 2;
-hashToNumber[1409920244]  = 3;
-hashToNumber[190752219]   = 4;
-hashToNumber[-161292196]  = 5;
-hashToNumber[1024300490]  = 6;
-hashToNumber[113276182]   = 7;
-hashToNumber[-1874617512] = 8;
-hashToNumber[528407293]   = 9;
+hashToNumber[1189449012] = -1;
+hashToNumber[-1096434653] = 0;
+hashToNumber[420018280] = 1;
+hashToNumber[1268389410] = 2;
+hashToNumber[-1987384758] = 3;
+hashToNumber[1326933829] = 4;
+hashToNumber[-2135049055] = 5;
+hashToNumber[-364335363] = 6;
+hashToNumber[1750311346] = 7;
+hashToNumber[-120840448] = 8;
+hashToNumber[977296571] = 9;
 
 function hashCode(s){           // djb2
   return s.split("").reduce(function(a,b){
@@ -75,9 +36,12 @@ function metaData(str) {
 
 function image2number(imageDataBase64) {
   var imageHash = hashCode(imageDataBase64);
+  if (debug) {
+    console.log(imageHash);
+  }
   var number = hashToNumber[imageHash];
   return number;
-}
+};
 
 function decodeGrid(grid) {
   let kGridSize = 4;
