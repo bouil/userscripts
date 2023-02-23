@@ -4,6 +4,7 @@ var debug = false;
 
 var hashToNumber = {};
 
+// chrome
 hashToNumber[1189449012] = -1;
 hashToNumber[-1096434653] = 0;
 hashToNumber[420018280] = 1;
@@ -15,6 +16,32 @@ hashToNumber[-364335363] = 6;
 hashToNumber[1750311346] = 7;
 hashToNumber[-120840448] = 8;
 hashToNumber[977296571] = 9;
+
+
+// firefox
+hashToNumber[1717226140] = 0;
+hashToNumber[1041759914] = 9;
+hashToNumber[1071594616] = 4;
+hashToNumber[-773803777] = 8;
+hashToNumber[186768332] = 1;
+hashToNumber[1850659647] = 6;
+hashToNumber[2113506753] = 7;
+hashToNumber[-393535903] = 5;
+hashToNumber[-1224342117] = 2;
+hashToNumber[515263165] = 3;
+
+// firefox bis
+hashToNumber[142344481] = 3;
+hashToNumber[-1129298722] = 8;
+hashToNumber[166536630] = 4;
+hashToNumber[1261568409] =
+hashToNumber[1903062125] = 2;
+hashToNumber[-2118895200] = 1;
+hashToNumber[-836376323] = 7;
+hashToNumber[1394188468] = 6;
+hashToNumber[30209061] = 9;
+hashToNumber[1828363346] = 0;
+hashToNumber[-1166098183] = 5;
 
 function hashCode(s){           // djb2
   return s.split("").reduce(function(a,b){
