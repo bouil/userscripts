@@ -20,9 +20,9 @@ def parse_file(path):
             if match:
                 include_path = os.path.join(dirname, match.group(2))
                 with open(include_path, 'r') as inc:
-                    print inc.read(),
+                    print(inc.read())
             else:
-                print line,
+                print(line)
 
 
 if __name__ == "__main__":
