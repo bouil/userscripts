@@ -1,6 +1,5 @@
 //#include "parts/LaBanquePostaleHeader.js"
 
-
 var debug = false;
 
 function metaData(str) {
@@ -29,21 +28,25 @@ function customizeUI(gridButtons) {
     // passwordInput.setAttribute("type", "password");
     // passwordInput.setAttribute("style", "display: inline-block");
     // remove the span that display the dots
-    passwordInput.nextSibling.remove();
-    document.getElementsByClassName("puces")[0].setAttribute("style", "display: none");
+    if (!debug) {
+        passwordInput.nextSibling.remove();
+        document.getElementsByClassName("puces")[0].setAttribute("style", "display: none");
+    }
 
     // add a new passwordInput
     const newPasswordInput = document.createElement("input");
     passwordInput.parentElement.appendChild(newPasswordInput);
-    newPasswordInput.setAttribute("style", "display: inline-block");
+    newPasswordInput.setAttribute("style", "display: inline-block; background-color: lightgreen;");
     newPasswordInput.setAttribute("type", "password");
 
     // remove the grid
-    document.getElementById("label-password").nextElementSibling.nextElementSibling.nextElementSibling.setAttribute("style", "display: none");
+    if (!debug) {
+        document.getElementById("label-password").nextElementSibling.nextElementSibling.nextElementSibling.setAttribute("style", "display: none");
+    }
 
     // replace the submit password
-    const btnConnexionParent = document.getElementById("btnConnexion").parentElement;
-    document.getElementById("btnConnexion").setAttribute("style", "display: none");
+    const btnConnexionParent = document.getElementById("btnConfirmer").parentElement;
+    document.getElementById("btnConfirmer").setAttribute("style", "display: none");
     const newButton = document.createElement("button");
     newButton.setAttribute("class", "tb-btn-p w100");
     newButton.setAttribute("type", "submit");
